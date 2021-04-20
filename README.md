@@ -2,6 +2,7 @@ Start:
 
 ```
 docker-compose up -d
+// wait until keycloak is up and running (check http://localhost:9990 is up)
 ./gradlew bootRun
 ```
 Error:
