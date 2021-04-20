@@ -1,0 +1,24 @@
+
+keycloak:
+  server-url: http://localhost:9990/auth
+  realm: test
+  client-id: test-backend-admin-service-account
+  client-secret: 7112d7a5-669d-459f-8657-9defa519988d
+  frontend-client-id: test
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.server-url}/realms/${keycloak.realm}
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${keycloak.server-url}/realms/${keycloak.realm}
+            user-name-attribute: email
+        registration:
+          keycloak:
+            client-id: ${keycloak.client-id}
+            client-secret: ${keycloak.client-secret}
+            scope: openid
